@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TaskController;
 use App\Models\Task;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
@@ -14,12 +15,6 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/tasks', function() {
-    $tasks = Task::all()->where('id', 5);
-
-    dd($tasks);
+Route::prefix('/tasks')->group(function () {
+    Route::get('/all', [TaskController::class, 'index']);
 });

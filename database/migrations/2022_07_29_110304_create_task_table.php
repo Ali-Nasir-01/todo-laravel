@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('task', function (Blueprint $table) {
+        Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->boolean('isDown');
+            $table->boolean('isDone')->default(false);
             $table->timestamps();
         });
     }
